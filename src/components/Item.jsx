@@ -53,13 +53,15 @@ const Item = ({ item, index, deleteQna, handleEdit }) => {
 
   return (
     <div className="flex flex-col w-full rounded-lg">
-      <div className="flex h-14 items-center w-full relative text-2xl uppercase text-left text-black border-b border-gray-200 cursor-pointer">
-        <h4
+      <div className="flex px-2 h-14 items-center w-full relative text-2xl uppercase text-left text-black border-b border-gray-200 cursor-pointer">
+        <div
           onClick={() => setIsOpen((prev) => !prev)}
-          className="w-11/12 h-full text-2xl font-semibold relative"
+          className="w-11/12 h-full flex justify-start items-center"
         >
-          {index + 1}. {item.title}
-        </h4>
+          <h4 className="text-2xl font-semibold">
+            {index + 1}. {item.title}
+          </h4>
+        </div>
         <div
           className="w-1/12 h-full flex justify-end items-center relative"
           onClick={() => setIsEdit(!isEdit)}
@@ -76,7 +78,7 @@ const Item = ({ item, index, deleteQna, handleEdit }) => {
             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />{" "}
           </svg>
           {isEdit && (
-            <ul className="absolute right-8 top-0 h-full z-20 bg-gray-100 rounded-sm flex gap-2">
+            <ul className="absolute right-8 top-0 h-full z-20 bg-neutral-100 rounded-sm flex gap-2">
               <li
                 onClick={() => {
                   deleteQna(item.id);
@@ -124,7 +126,9 @@ const Item = ({ item, index, deleteQna, handleEdit }) => {
             animate="animate"
             exit="exit"
           >
-            <p className="py-4">{item.description}</p>
+            <p className="py-4 px-2 text-lg font-medium bg-neutral-200">
+              {item.description}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
