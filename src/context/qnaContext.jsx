@@ -32,6 +32,7 @@ export const QnaProvider = ({ children }) => {
 
   const deleteQna = async (id) => {
     await deleteDoc(doc(FireStoreDb, "qna", id));
+    if (editedItem && editedItem.id === id) setEditedItem(null);
 
     fetchQna();
   };
